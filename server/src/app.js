@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import { env } from './config/env.js';
 import healthRoutes from './routes/health.js';
 import { notFound, errorHandler } from './middleware/errorHandler.js';
+import authRoutes from './routes/auth.js';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json({ limit: '100kb' }));
 app.use(cookieParser());
 
 app.use('/api/health', healthRoutes);
+app.use('/api/auth', authRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
