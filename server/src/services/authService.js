@@ -5,7 +5,8 @@ import { AppError } from '../errors.js';
 import { env } from '../config/env.js';
 import { TOKEN_TTL_SECONDS } from '../config/auth.js';
 
-const ROUNDS = 12;
+const ROUNDS = env.BCRYPT_ROUNDS;
+
 // Compared when the email is unknown, so response time does not reveal which emails exist
 const DUMMY_HASH = bcrypt.hashSync('dummy-password', ROUNDS);
 

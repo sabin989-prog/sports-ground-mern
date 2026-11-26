@@ -7,6 +7,8 @@ const schema = z.object({
   MONGODB_URI: z.string().min(1),
   JWT_SECRET: z.string().min(32),
   CLIENT_ORIGIN: z.string().url(),
+  MEDIA_ROOT: z.string().min(1).default('./media'),
+  BCRYPT_ROUNDS: z.coerce.number().int().min(4).max(15).default(12),
 });
 
 const parsed = schema.safeParse(process.env);

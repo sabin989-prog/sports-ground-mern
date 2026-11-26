@@ -1,6 +1,6 @@
 FROM node:22-bookworm-slim AS base
 WORKDIR /app
-RUN chown node:node /app
+RUN mkdir -p /media && chown node:node /app /media
 USER node
 COPY --chown=node:node package.json package-lock.json ./
 
