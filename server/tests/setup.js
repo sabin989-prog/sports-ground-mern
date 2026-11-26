@@ -1,10 +1,13 @@
 import { beforeAll, afterEach, afterAll } from 'vitest';
 import mongoose from 'mongoose';
 import User from '../src/models/User.js';
+import Sport from '../src/models/Sport.js';
+import Venue from '../src/models/Venue.js';
+import Ground from '../src/models/Ground.js';
 
 beforeAll(async () => {
   await mongoose.connect(process.env.MONGODB_URI);
-  await User.init(); // makes sure the unique email index exists
+  await Promise.all([User.init(), Sport.init(), Venue.init(), Ground.init()]);
 });
 
 afterEach(async () => {
